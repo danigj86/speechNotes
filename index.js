@@ -1,5 +1,6 @@
 const btnStartRecord = document.getElementById('btnStartRecord');
 const btnStopRecord = document.getElementById('btnStopRecord');
+const btnPdf = document.getElementById('btnPdf');
 const texto = document.getElementById('texto');
 
 if (!('webkitSpeechRecognition' in window)) {
@@ -16,18 +17,16 @@ recognition.maxAlternatives = 1;
 recognition.onresult = (event) => {
     const results = event.results;
     var frase = results[results.length - 1][0].transcript;
-    console.log('frase: ' +frase.charAt(0).toUpperCase());
+    /* console.log('frase: ' +frase.charAt(0).toUpperCase()); */
    
-   //Primera letra en mayúscula
-    frase = frase.charAt(0).toUpperCase() + frase.slice(1);
+     //Primera letra en mayúscula
+     frase = frase.charAt(0).toUpperCase() + frase.slice(1);
 
-    var textoString = '';
-   
+     let ultimaPalabra = frase.substr(-19);
+     let palabraClave = ultimaPalabra.toLowerCase();
+     /* console.log('Palabra clave: ' +palabraClave); */
 
 
-    let ultimaPalabra = frase.substr(-19);
-    let palabraClave = ultimaPalabra.toLowerCase();
-    /* console.log('palabra clave: ' +palabraClave); */
       
 
     if (palabraClave.includes('nueva línea')) {
@@ -58,29 +57,14 @@ recognition.onresult = (event) => {
         
      texto.innerHTML  +=  frase;
     }
-    
-    textoString = texto.innerHTML;
-
-    console.log('El texto del area es: '+texto.innerHTML)
-    console.log('El texto de textoString: '+textoString)
-
-    for (let index = 0; index < textoString.length; index++) {
-        console.log(textoString.charAt(index));
-
-        if (textoString.charAt(index) == '.') {
-            console.log('HE ENCONTRADO UN PUNTO');
-            console.log('EN LA POSICION: '+ index);
-            console.log('Y DOS POSICIONES MAS ES: ');
-
-            console.log(textoString.charAt(index + 2)) 
-        }
-        
-    }
-
 
 }
-
-
+function capitalizeFirstLetter(string) {
+    console.log('capitalize:' + string.charAt(0));
+    return string.charAt(0).toUpperCase() + string.slice(1);
+    
+  }
+  
 
 btnStartRecord.addEventListener('click', function () {
     recognition.start();
@@ -91,3 +75,28 @@ btnStopRecord.addEventListener('click', function () {
     recognition.abort();
     console.log('stop')
 })
+
+/*=========JS PDF ============*/
+btnPdf.addEventListener('click', function () {
+
+    /* console.log(textoPdf) */
+    var doc = new jsPDF();
+    
+    //Ancho del documento
+    /* var width = doc.getTextWidth(texto.innerHTML);
+    console.log(width); */
+
+    doc.text('Texto grabado: '+ texto.innerHTML, 10, 10, { align: 'justify', lineHeightFactor: 1.5, maxWidth: 170 });
+
+    doc.save('mi-documento.pdf');
+
+})
+
+
+
+
+/* test.addEventListener('input', e => {
+    log.innerHTML = e.target.value.replace(/([!?.]\s+)([a-z])/g, function(m, $1, $2) {
+        return $1+$2.toUpperCase();
+    });
+}); */

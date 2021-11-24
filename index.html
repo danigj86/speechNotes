@@ -1,32 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEXTO Y VOZ 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
     <style>
-        textarea{
+        :root {
+            --dark1-bg-color: #222831;
+            --dark2-bg-color: #393E46;
+            --second-bg-color: #00ADB5;
+            --main-bg-color: #00FFF5;
+            
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: var(--dark1-bg-color);
+            background: url("fondo.jpg") no-repeat center center/cover;
+        }
+        .section {
+            height: 100vh;
+            background-color: var(--dark2-bg-color);
+            display: flex;
+            flex-direction: column;
+            max-width: 1100px;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .titulo {
+            /* background-color: var(--main-bg-color); */
+            color: white;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .titulo h2 {
+            letter-spacing: 4px;
+            font-size: 34px;
+            word-spacing: 8px;
+        }
+
+        .botones {
+            /* background-color: red; */
+            display: flex;
+            flex-wrap: wrap;
+            width: 60%;
+            justify-content: space-around;
+            padding: 20px;
+            height: 100px;
+            margin: 5px;
+
+        }
+
+        .botones button {
+            border: 2px solid transparent;
+            padding: 8px;
+            background-color: var(--second-bg-color);
+            color: white;
+            font-size: 18px;
+            border-radius: 20px;
+            transition: all .3s ease;
+
+        }
+
+        .botones button:hover{
+            background-color: transparent;
+            border-color: var(--main-bg-color);
+            color: var(--main-bg-color);
+        }
+
+
+        .texto {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        textarea {
             box-sizing: border-box;
             padding: 3px;
             width: 80%;
-            height: 700px;
+            height: 600px;
             resize: none;
+            background-color: var(--dark1-bg-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 20px;
         }
     </style>
 </head>
+
 <body>
-    <div class="botones">
-        <button id="btnStartRecord">Empezar a grabar</button>
-        <button id="btnStopRecord">Detener grabacón</button>
-    </div>
-    <br><br>
-    
-    <textarea id="texto" cols="80" rows="10">
-        
+    <div class="section">
+        <div class="titulo">
+            <h2>SPEECH NOTES TO PDF</h2>
+        </div>
+        <div class="botones">
+            <button id="btnStartRecord">Empezar a grabar</button>
+            <button id="btnStopRecord">Detener grabacón</button>
+        </div>
+        <br><br>
+        <div class="texto">
+            <textarea id="texto" readonly>
+
     </textarea>
-    <p ></p>
+        </div>
+
+        <br>
+        <div class="botones">
+            <button id="btnPdf">Descarga PDF</button>
+            <button id="btnPdf">Copiar texto</button>
+            <button id="btnStopRecord">Mandar Email</button>
+        </div>
+
+
+       <!--  <input type='text' id='test' autofocus /><br />
+        <span id='log'></span> -->
+    </div>
+
 
     <script src="index.js"></script>
 </body>
+
 </html>
