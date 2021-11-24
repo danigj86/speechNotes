@@ -7,6 +7,7 @@ if (!('webkitSpeechRecognition' in window)) {
     alert('Lo sentimos, necesitas usar la API en Chrome')
 }
 
+//SpeechRecognition
 let recognition = new webkitSpeechRecognition();
 
 recognition.lang = 'es-ES';
