@@ -1,7 +1,11 @@
 const btnStartRecord = document.getElementById('btnStartRecord');
 const btnStopRecord = document.getElementById('btnStopRecord');
 const btnPdf = document.getElementById('btnPdf');
+const btnCopy = document.getElementById('btnCopy');
+const btnEmail = document.getElementById('btnEmail');
+const btnNewRecord = document.getElementById('btnNewRecord');
 const texto = document.getElementById('texto');
+var grabando = false;
 
 if (!('webkitSpeechRecognition' in window)) {
     alert('Lo sentimos, necesitas usar la API en Chrome')
@@ -26,9 +30,6 @@ recognition.onresult = (event) => {
      let ultimaPalabra = frase.substr(-19);
      let palabraClave = ultimaPalabra.toLowerCase();
      /* console.log('Palabra clave: ' +palabraClave); */
-
-
-      
 
     if (palabraClave.includes('nueva línea')) {
      texto.innerHTML  += '\r\n';
@@ -60,24 +61,10 @@ recognition.onresult = (event) => {
     }
 
 }
-function capitalizeFirstLetter(string) {
-    console.log('capitalize:' + string.charAt(0));
-    return string.charAt(0).toUpperCase() + string.slice(1);
-    
-  }
-  
+/*=============================*/
 
-btnStartRecord.addEventListener('click', function () {
-    recognition.start();
-    console.log('start')
-});
 
-btnStopRecord.addEventListener('click', function () {
-    recognition.abort();
-    console.log('stop')
-})
-
-/*=========JS PDF ============*/
+/*========= JS PDF ============*/
 btnPdf.addEventListener('click', function () {
 
     /* console.log(textoPdf) */
@@ -88,14 +75,58 @@ btnPdf.addEventListener('click', function () {
     console.log(width); */
 
     doc.text('Texto grabado: '+ texto.innerHTML, 10, 10, { align: 'justify', lineHeightFactor: 1.5, maxWidth: 170 });
-
     doc.save('mi-documento.pdf');
 
+})
+/*===============================*/
+  
+/*========= BOTONES ============*/
+
+btnStartRecord.addEventListener('click', function () {
+    btnStartRecord.classList.add("grabando")
+    recognition.start();
+    console.log('start')
+    grabando = true;
+    btnStartRecord.innerHTML = 'GRABANDO'
+    
+
+});
+
+btnStopRecord.addEventListener('click', function () {
+    recognition.abort();
+    console.log('stop')
+    btnStartRecord.innerHTML = 'Empezar a grabar';
+    btnStartRecord.classList.remove('grabando')
+    
+})
+
+btnCopy.addEventListener('click', function(){
+    texto.select();
+    texto.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+
+})
+
+btnEmail.addEventListener('click', function(){
+    window.location.href = `mailto:address@dmail.com?body= ${texto.innerHTML}`;
+})
+
+btnNewRecord.addEventListener('click', function(){
+    location.reload();
 })
 
 
 
+var btnInstrucciones = document.getElementById('btnInstrucciones');
+var modal1 = document.getElementById('modal');
+var close = document.getElementById('close');
 
+btnInstrucciones.addEventListener('click', function () {
+    modal1.classList.add('show')
+})
+close.addEventListener('click', function () {
+    modal1.classList.remove('show')
+})
 /* test.addEventListener('input', e => {
     log.innerHTML = e.target.value.replace(/([!?.]\s+)([a-z])/g, function(m, $1, $2) {
         return $1+$2.toUpperCase();

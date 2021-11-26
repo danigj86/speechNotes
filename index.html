@@ -16,17 +16,59 @@
     <div class="section">
         <div class="titulo">
             <h2>SPEECH NOTES TO PDF</h2>
+            <button id="btnInstrucciones">Instrucciones</button>
+            <div class="modal" id="modal">
+                <div class="modal__content">
+                    <p>Utiliza los siguientes comandos de voz para insertar caracteres:</p>
+                    <table>
+                        <tr>
+                            <td> <b> Diga</b></td>
+                            <td><b> Para insertar</b></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Punto</td>
+                            <td>.</td>
+                        </tr>
+                        <tr>
+                            <td>Coma</td>
+                            <td>,</td>
+                        </tr>
+                        <tr>
+                            <td>Nueva línea</td>
+                            <td>↵</td>
+                        <tr>
+                            <td>Nuevo párrafo</td>
+                            <td>↵</td>
+                        </tr>
+                        <tr>
+                            <td>Cierra interrogante</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Abre paréntesis</td>
+                            <td>(</td>
+                        </tr>
+                        <tr>
+                            <td>Cierra paréntesis</td>
+                            <td>)</td>
+                        </tr>
+                    </table>
+                    <button id='close'> X </button>
+                </div>
+            </div>
         </div>
         <div class="botones">
             <button id="btnStartRecord">Empezar a grabar</button>
             <button id="btnStopRecord">Detener grabacón</button>
-            
+            <button id="btnNewRecord">Nueva grabación</button>
         </div>
-        
-        <div class="texto">
-            <textarea id="texto" readonly>
 
-    </textarea>
+        <div class="texto">
+            <textarea id="texto" readonly> </textarea>
         </div>
 
         <br>
@@ -37,7 +79,7 @@
         </div>
 
 
-       <!--  <input type='text' id='test' autofocus /><br />
+        <!--  <input type='text' id='test' autofocus /><br />
         <span id='log'></span> -->
     </div>
 
