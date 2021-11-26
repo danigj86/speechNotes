@@ -36,12 +36,12 @@ body{
     color: white;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding: 10px;
 }
 .titulo button{
-    margin-left: 50px;
+   /*  margin-left: 50px; */
     border: 1px solid transparent;
     padding: 8px;
     font-size: 16px;
@@ -124,7 +124,6 @@ textarea {
 
 /*=========MODAL=========*/
 .modal {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -140,13 +139,11 @@ textarea {
     transition: all .3s ease;
 }
 
-
-
 .modal__content {
     background-color: white;
     border-radius: 15px;
     width: 400px;
-    height: 400px;
+    height: 420px;
     padding: 30px;
     color: var(--dark1-bg-color);
     display: flex;
@@ -163,9 +160,12 @@ textarea {
     font-size: 16px;
 }
 .modal__content table td{ 
+    margin: auto;
     font-size: 18px;
+    text-align: center;
 }
 .modal__content button{
+    margin: auto;
     width: 40px;
     margin-top: 30px;
     padding: 3px;
@@ -179,4 +179,52 @@ textarea {
     /* transform: scale(1); */
     opacity: 1;
     visibility: visible;
+}
+
+/*========= TEXTO ======*/
+
+.section .textoP{
+    display: flex ;
+    flex-direction: column ;
+    color: white;
+    padding: 50px;
+    text-align: justify;
+
+}
+.section .textoP p{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/*========== RESPONSIVE DESIGN ======*/
+@media (max-width: 923px) {
+
+    .botones{
+     width: 100%;
+     margin-bottom: 85px;
+    }
+    .titulo{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        /* background-color: red; */
+    }
+    .titulo button{
+        max-width: 200px;
+        margin-top: 10px;
+    }
+   /*  textarea{
+        width: 100%;
+    } */
+   
+}
+
+@media (max-width: 380px) {
+
+    .modal__content{
+        width: 90%;
+        height: 70%;
+    }
+  
 }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEXTO Y VOZ 1</title>
+
     <!--CSS-->
     <link rel="stylesheet" href="estilos.css">
     <!--Js PDF-->
@@ -19,7 +20,7 @@
             <button id="btnInstrucciones">Instrucciones</button>
             <div class="modal" id="modal">
                 <div class="modal__content">
-                    <p>Utiliza los siguientes comandos de voz para insertar caracteres:</p>
+                    <p>Utilice los siguientes comandos de voz para insertar caracteres:</p>
                     <table>
                         <tr>
                             <td> <b> Diga</b></td>
@@ -57,6 +58,8 @@
                             <td>)</td>
                         </tr>
                     </table>
+                    <br>
+                    <p> <b>Recuerde hablar despacio </b> &#128539; </p>
                     <button id='close'> X </button>
                 </div>
             </div>
@@ -78,13 +81,48 @@
             <button id="btnEmail">Mandar Email</button>
         </div>
 
-
+        <div class="textoP">
+            <p>Speechnotes es un potente bloc de notas en línea con reconocimiento de voz, diseñado para dar fuerza a
+                sus ideas mediante un diseño limpio y eficiente, para que pueda concentrarse en crear. </p>
+            <p>Funciona completamente en línea en su navegador Chrome. No requiere descarga, ni instalación ni tan
+                siquiera registro, para que pueda empezar a trabajar inmediatamente.</p>
+            <p>Entre sus funciones, podrás grabar tus propias notas de audio y guardarlas en PDF, copiar el dictado o
+                mandarlo directamente por email.</p>
+            <p>Además de eso, hablar en lugar de escribir le permite pensar y expresar sus ideas con fluidez y sin
+                interrupciones, lo que a su vez estimula el pensamiento claro y creativo. Las fuentes y los colores en
+                toda la aplicación se diseñaron para ser nítidos y tener una excelente legibilidad.</p>
+            <p>
+                Cualquiera que esté cansado de la escritura habitual mediante teclado podría encontrar Speechnotes útil.
+                También podría ser especialmente útil para las personas con dificultades para escribir. Estas
+                dificultades podrían derivarse de un problema físico, o simplemente de no dominar la técnica de
+                escritura con teclado desde una edad lo bastante temprana.
+            </p>
+        </div>
         <!--  <input type='text' id='test' autofocus /><br />
         <span id='log'></span> -->
     </div>
 
 
+
     <script src="index.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      
+        if (!('webkitSpeechRecognition' in window)) {
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Esta aplicación sólo es compatible con Chrome!',
+            footer: 'Revise su navegador. Gracias'
+        })
+
+        }
+
+    </script>
+
+
+
 </body>
 
 </html>

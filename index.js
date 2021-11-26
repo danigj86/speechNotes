@@ -7,10 +7,6 @@ const btnNewRecord = document.getElementById('btnNewRecord');
 const texto = document.getElementById('texto');
 var grabando = false;
 
-if (!('webkitSpeechRecognition' in window)) {
-    alert('Lo sentimos, necesitas usar la API en Chrome')
-}
-
 //SpeechRecognition
 let recognition = new webkitSpeechRecognition();
 
@@ -116,7 +112,7 @@ btnNewRecord.addEventListener('click', function(){
 })
 
 
-
+/*====== MODAL =====*/
 var btnInstrucciones = document.getElementById('btnInstrucciones');
 var modal1 = document.getElementById('modal');
 var close = document.getElementById('close');
@@ -127,8 +123,5 @@ btnInstrucciones.addEventListener('click', function () {
 close.addEventListener('click', function () {
     modal1.classList.remove('show')
 })
-/* test.addEventListener('input', e => {
-    log.innerHTML = e.target.value.replace(/([!?.]\s+)([a-z])/g, function(m, $1, $2) {
-        return $1+$2.toUpperCase();
-    });
-}); */
+
+
